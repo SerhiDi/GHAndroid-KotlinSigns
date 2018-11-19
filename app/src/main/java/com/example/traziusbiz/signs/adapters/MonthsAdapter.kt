@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.traziusbiz.signs.R
-import com.example.traziusbiz.signs.entities.Day
+import com.example.traziusbiz.signs.entities.Month
 
-class DaysAdapter(private val items: List<Day>) : RecyclerView.Adapter<DaysAdapter.ViewHolder>() {
+class MonthsAdapter(private val items: List<Month>) : RecyclerView.Adapter<MonthsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val dayView = R.layout.day_item
-        val view = LayoutInflater.from(parent.context).inflate(dayView, parent, false)
+        val monthView = R.layout.month_item
+        val view = LayoutInflater.from(parent.context).inflate(monthView, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dayName.text = items[position].name
+        holder.monthName.text = items[position].name
     }
 
     override fun getItemCount(): Int {
@@ -25,10 +25,10 @@ class DaysAdapter(private val items: List<Day>) : RecyclerView.Adapter<DaysAdapt
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val dayName: TextView
+        val monthName: TextView
 
         init {
-            dayName = itemView.findViewById(R.id.day_name)
+            monthName = itemView.findViewById(R.id.month_name)
         }
     }
 }
