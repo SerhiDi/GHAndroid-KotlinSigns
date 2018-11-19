@@ -4,20 +4,22 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.traziusbiz.signs.R
-import com.example.traziusbiz.signs.entities.Day
+import com.example.traziusbiz.signs.entities.Sign
 
-class DaysAdapter(private val items: List<Day>) : RecyclerView.Adapter<DaysAdapter.ViewHolder>() {
+class SignsAdapter(private val items: List<Sign>) : RecyclerView.Adapter<SignsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val dayView = R.layout.day_item
-        val view = LayoutInflater.from(parent.context).inflate(dayView, parent, false)
+        val signView = R.layout.sign_item
+        val view = LayoutInflater.from(parent.context).inflate(signView, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dayName.text = items[position].name
+        holder.signName.text = items[position].name
+        holder.signImage.setImageResource(items[position].imageId)
     }
 
     override fun getItemCount(): Int {
@@ -25,10 +27,12 @@ class DaysAdapter(private val items: List<Day>) : RecyclerView.Adapter<DaysAdapt
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val dayName: TextView
+        val signName: TextView
+        val signImage: ImageView
 
         init {
-            dayName = itemView.findViewById(R.id.day_name)
+            signName = itemView.findViewById(R.id.sign_name)
+            signImage = itemView.findViewById(R.id.sign_image)
         }
     }
 }
